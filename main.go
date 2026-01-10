@@ -1,53 +1,42 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
+
+	y2015d01 "github.com/tvdotdev/advent-of-code/y2015/d01"
 )
 
 func main() {
-	dataBuffer, err := os.ReadFile("./input.txt")
-	if err != nil {
-		fmt.Printf("Error reading input file: %v\n", err)
+	year := flag.Int("year", 0, "Year of the puzzle")
+	day := flag.Int("day", 0, "day of the puzzle")
+
+	flag.Parse()
+
+	// y2015/d01, d12
+	dayPath := fmt.Sprintf("y%d/d%02d", *year, *day)
+
+	solutionPath := filepath.Join(dayPath, "solution.go")
+
+	if _, err := os.Stat(solutionPath); os.IsNotExist(err) {
+		fmt.Printf("Solutions for year %d, day %d not found on %s", *year, *day, solutionPath)
 		os.Exit(1)
 	}
-	instructions := string(dataBuffer)
 
-	// Part 1: final floor
-	floor := getFloorByInstructions(instructions)
-	fmt.Printf("Part 1 - Final floor: %d\n", floor)
-
-	// Part 2: position when first entering basement
-	position := findBasementPosition(instructions)
-	fmt.Printf("Part 2 - First basement position: %d\n", position)
-}
-
-func getFloorByInstructions(instructions string) int {
-	floor := 0
-
-	for _, instruction := range instructions {
-		if instruction == '(' {
-			floor += 1
-		} else if instruction == ')' {
-			floor -= 1
-		}
+	input := ""
+	inputPath := filepath.Join(dayPath, "input.txt")
+	if dataBuffer, err := os.ReadFile(inputPath); err == nil {
+		input = string(dataBuffer)
 	}
-	return floor
-}
 
-func findBasementPosition(instructions string) int {
-	floor := 0
+	switch {
 
-	for index, instruction := range instructions {
-		if instruction == '(' {
-			floor += 1
-		} else if instruction == ')' {
-			floor -= 1
-		}
-
-		if floor == -1 {
-			return index + 1
-		}
+	case *year == 2015 && *day == 1:
+		y2015d01.Solve(input)
+	default:
+		fmt.Printf("No solutions implented yet for year %d, day %d", *year, *day)
+		os.Exit(1)
 	}
-	return 0
 }
