@@ -6,13 +6,20 @@ import (
 )
 
 func main() {
-	fmt.Print("Hello world")
-
-	dataBuffer, _ := os.ReadFile("./input")
-
+	dataBuffer, err := os.ReadFile("./input.txt")
+	if err != nil {
+		fmt.Printf("Error reading input file: %v\n", err)
+		os.Exit(1)
+	}
 	instructions := string(dataBuffer)
-	floor := getFloorByInstructionsPt2(instructions)
-	fmt.Printf("\nfloor is %d", floor)
+
+	// Part 1: final floor
+	floor := getFloorByInstructions(instructions)
+	fmt.Printf("Part 1 - Final floor: %d\n", floor)
+
+	// Part 2: position when first entering basement
+	position := findBasementPosition(instructions)
+	fmt.Printf("Part 2 - First basement position: %d\n", position)
 }
 
 func getFloorByInstructions(instructions string) int {
@@ -21,24 +28,20 @@ func getFloorByInstructions(instructions string) int {
 	for _, instruction := range instructions {
 		if instruction == '(' {
 			floor += 1
-		}
-
-		if instruction == ')' {
+		} else if instruction == ')' {
 			floor -= 1
 		}
 	}
 	return floor
 }
 
-func getFloorByInstructionsPt2(instructions string) int {
+func findBasementPosition(instructions string) int {
 	floor := 0
 
 	for index, instruction := range instructions {
 		if instruction == '(' {
 			floor += 1
-		}
-
-		if instruction == ')' {
+		} else if instruction == ')' {
 			floor -= 1
 		}
 
