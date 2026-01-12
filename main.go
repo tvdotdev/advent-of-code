@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
 	y2015d01 "github.com/tvdotdev/advent-of-code/y2015/d01"
+	y2015d02 "github.com/tvdotdev/advent-of-code/y2015/d02"
 )
 
 func main() {
@@ -15,7 +16,6 @@ func main() {
 
 	flag.Parse()
 
-	// y2015/d01, d12
 	dayPath := fmt.Sprintf("y%d/d%02d", *year, *day)
 
 	solutionPath := filepath.Join(dayPath, "solution.go")
@@ -35,6 +35,9 @@ func main() {
 
 	case *year == 2015 && *day == 1:
 		y2015d01.Solve(input)
+	case *year == 2015 && *day == 2:
+		y2015d02.Solve(input)
+
 	default:
 		fmt.Printf("No solutions implented yet for year %d, day %d", *year, *day)
 		os.Exit(1)
