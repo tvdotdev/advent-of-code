@@ -17,7 +17,7 @@ func Solve(input string) {
 func findNumberHash(secretKey string, prefix string) int {
 	number := 0
 
-	// for number :=0; 10M ++
+	// for number := 1; number <= 10_000_000; number++ { ... }
 	// for { }
 
 	for {
