@@ -10,6 +10,7 @@ import (
 	y2015d02 "github.com/tvdotdev/advent-of-code/y2015/d02"
 	y2015d03 "github.com/tvdotdev/advent-of-code/y2015/d03"
 	y2015d04 "github.com/tvdotdev/advent-of-code/y2015/d04"
+	y2015d05 "github.com/tvdotdev/advent-of-code/y2015/d05"
 )
 
 func main() {
@@ -44,6 +45,8 @@ func main() {
 
 	case *year == 2015 && *day == 4:
 		y2015d04.Solve(input)
+	case *year == 2015 && *day == 5:
+		y2015d05.Solve(input)
 
 	default:
 		fmt.Printf("No solutions implented yet for year %d, day %d", *year, *day)
