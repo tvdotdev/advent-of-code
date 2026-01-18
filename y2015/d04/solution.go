@@ -4,8 +4,13 @@ import (
 	"crypto/md5"
 	"fmt"
 	"strings"
+
+	"github.com/tvdotdev/advent-of-code/register"
 )
 
+func init() {
+	register.Register(2015, 4, Solve)
+}
 func Solve(input string) {
 	part1 := findNumberHash(input, "00000")
 	fmt.Printf("Part 1: %d", part1)

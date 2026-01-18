@@ -4,7 +4,13 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/tvdotdev/advent-of-code/register"
 )
+
+func init() {
+	register.Register(2015, 2, Solve)
+}
 
 type Present struct {
 	L, W, H int

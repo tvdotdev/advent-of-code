@@ -2,7 +2,13 @@ package d01
 
 import (
 	"fmt"
+
+	"github.com/tvdotdev/advent-of-code/register"
 )
+
+func init() {
+	register.Register(2015, 1, Solve)
+}
 
 func Solve(input string) {
 

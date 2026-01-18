@@ -6,11 +6,12 @@ import (
 	"os"
 	"path/filepath"
 
-	y2015d01 "github.com/tvdotdev/advent-of-code/y2015/d01"
-	y2015d02 "github.com/tvdotdev/advent-of-code/y2015/d02"
-	y2015d03 "github.com/tvdotdev/advent-of-code/y2015/d03"
-	y2015d04 "github.com/tvdotdev/advent-of-code/y2015/d04"
-	y2015d05 "github.com/tvdotdev/advent-of-code/y2015/d05"
+	"github.com/tvdotdev/advent-of-code/register"
+	_ "github.com/tvdotdev/advent-of-code/y2015/d01"
+	_ "github.com/tvdotdev/advent-of-code/y2015/d02"
+	_ "github.com/tvdotdev/advent-of-code/y2015/d03"
+	_ "github.com/tvdotdev/advent-of-code/y2015/d04"
+	_ "github.com/tvdotdev/advent-of-code/y2015/d05"
 )
 
 func main() {
@@ -34,22 +35,10 @@ func main() {
 		input = string(dataBuffer)
 	}
 
-	switch {
-
-	case *year == 2015 && *day == 1:
-		y2015d01.Solve(input)
-	case *year == 2015 && *day == 2:
-		y2015d02.Solve(input)
-	case *year == 2015 && *day == 3:
-		y2015d03.Solve(input)
-
-	case *year == 2015 && *day == 4:
-		y2015d04.Solve(input)
-	case *year == 2015 && *day == 5:
-		y2015d05.Solve(input)
-
-	default:
-		fmt.Printf("No solutions implented yet for year %d, day %d", *year, *day)
+	if solve, ok := register.Solutions[*year][*day]; ok {
+		solve(input)
+	} else {
+		fmt.Printf("No solution yet for year %d day %d", *year, *day)
 		os.Exit(1)
 	}
 }

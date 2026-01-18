@@ -1,6 +1,14 @@
 package d03
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/tvdotdev/advent-of-code/register"
+)
+
+func init() {
+	register.Register(2015, 3, Solve)
+}
 
 type Point struct {
 	X, Y int

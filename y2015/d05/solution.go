@@ -3,7 +3,13 @@ package d05
 import (
 	"fmt"
 	"strings"
+
+	"github.com/tvdotdev/advent-of-code/register"
 )
+
+func init() {
+	register.Register(2015, 5, Solve)
+}
 
 func Solve(input string) {
 	santaStrings := strings.Split(input, "\n")
