@@ -20,6 +20,7 @@ import (
 	_ "github.com/tvdotdev/advent-of-code/y2015/d11"
 	_ "github.com/tvdotdev/advent-of-code/y2015/d12"
 	_ "github.com/tvdotdev/advent-of-code/y2015/d13"
+	_ "github.com/tvdotdev/advent-of-code/y2015/d14"
 )
 
 func main() {
